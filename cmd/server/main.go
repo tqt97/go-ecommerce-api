@@ -1,7 +1,19 @@
 package main
 
-import "fmt"
+import (
+	"log"
+
+	"githud.com/tqt97/go-ecommerce-api/internal/routers"
+)
+
+
 
 func main() {
-	fmt.Println("Hello World")
+	// Create a Gin router with default middleware (logger and recovery)
+	r := routers.NewRouter()
+	// Start server on port 8080 (default)
+	// Server will listen on 0.0.0.0:8080 (localhost:8080 on Windows)
+	if err := r.Run(); err != nil {
+		log.Fatalf("failed to run server: %v", err)
+	}
 }
